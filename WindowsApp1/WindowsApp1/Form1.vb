@@ -80,16 +80,21 @@ Public Class Form1
 
     Private Sub TreeView1_NodeMouseClick(sender As Object, e As TreeNodeMouseClickEventArgs) Handles TreeView1.NodeMouseClick
 
-        For Each x In e.Node.Nodes
-            x.checked = e.Node.Checked
+        Try
 
-            For Each y In DirectCast(x, TreeNode).Nodes
-                y.checked = DirectCast(x, TreeNode).Checked
+
+            For Each x In e.Node.Nodes
+                x.checked = e.Node.Checked
+
+                For Each y In DirectCast(x, TreeNode).Nodes
+                    y.checked = DirectCast(x, TreeNode).Checked
+                Next
+
             Next
 
-        Next
+        Catch ex As Exception
 
-
+        End Try
 
 
 
@@ -97,33 +102,49 @@ Public Class Form1
     End Sub
 
     Private Function GetData(query As String) As DataTable
-        Dim dt As New DataTable()
-        Dim constr As String = "Data Source=(local);Initial Catalog=mark_multi_uniform_net;Integrated Security=true"
-        Using con As New SqlConnection(constr)
-            Using cmd As New SqlCommand(query)
-                Using sda As New SqlDataAdapter()
-                    cmd.CommandType = CommandType.Text
-                    cmd.Connection = con
-                    sda.SelectCommand = cmd
-                    sda.Fill(dt)
+
+        Try
+
+
+            Dim dt As New DataTable()
+            Dim constr As String = "Data Source=(local);Initial Catalog=mark_multi_uniform_net;Integrated Security=true"
+            Using con As New SqlConnection(constr)
+                Using cmd As New SqlCommand(query)
+                    Using sda As New SqlDataAdapter()
+                        cmd.CommandType = CommandType.Text
+                        cmd.Connection = con
+                        sda.SelectCommand = cmd
+                        sda.Fill(dt)
+                    End Using
                 End Using
+                Return dt
             End Using
-            Return dt
-        End Using
+
+        Catch ex As Exception
+
+        End Try
     End Function
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Try
 
-        For Each x In TreeView1.Nodes 'div
-            For Each y In x.Nodes 'dept
 
-                For Each z In y.nodes
-                    If z.checked Then
-                        MsgBox(z.text)
-                    End If
+
+            For Each x In TreeView1.Nodes 'div
+                For Each y In x.Nodes 'dept
+
+                    For Each z In y.nodes
+                        If z.checked Then
+                            MsgBox(z.text)
+                        End If
+                    Next
+
                 Next
-
             Next
-        Next
+        Catch ex As Exception
+
+        End Try
     End Sub
+
+
 End Class
