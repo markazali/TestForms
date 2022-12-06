@@ -10,3 +10,7 @@ C:\Users\maraza\Documents\TestForms\WindowsApp1\WindowsApp1\obj\Debug\WindowsApp
 C:\Users\maraza\Documents\TestForms\WindowsApp1\WindowsApp1\obj\Debug\WindowsApp1.exe
 C:\Users\maraza\Documents\TestForms\WindowsApp1\WindowsApp1\obj\Debug\WindowsApp1.xml
 C:\Users\maraza\Documents\TestForms\WindowsApp1\WindowsApp1\obj\Debug\WindowsApp1.pdb
+C:\Users\maraza\Documents\TestForms\WindowsApp1\WindowsApp1\bin\Debug\Newtonsoft.Json.dll
+C:\Users\maraza\Documents\TestForms\WindowsApp1\WindowsApp1\bin\Debug\Newtonsoft.Json.xml
+C:\Users\maraza\Documents\TestForms\WindowsApp1\WindowsApp1\obj\Debug\WindowsApp1.Form2.resources
+C:\Users\maraza\Documents\TestForms\WindowsApp1\WindowsApp1\obj\Debug\WindowsApp1.vbproj.CopyComplete

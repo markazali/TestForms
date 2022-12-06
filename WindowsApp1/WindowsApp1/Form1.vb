@@ -2,14 +2,25 @@
 
 Public Class Form1
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
+
+        With ComboBoxProperties
+            .DisplayMember = "companyname"
+            .ValueMember = "propertyno"
+            .DataSource = GetData("select propertyno, companyname from properties where deleted = 0")
+
+        End With
+
+
+
+
+
+    End Sub
+    Private Sub FillDivs()
         Dim dt As DataTable = Me.GetData("SELECT divisionno, division 
         FROM divisions 
         where deleted = 0 
-        and propertyno =" & 1 & " order by division")
+        and propertyno =" & ComboBoxProperties.SelectedValue & " order by division")
         Me.PopulateTreeView(dt, 0, Nothing, 1)
-
-
-
     End Sub
 
     Private Sub PopulateTreeView(dtParent As DataTable,
@@ -85,9 +96,9 @@ Public Class Form1
 
             For Each x In e.Node.Nodes
                 x.checked = e.Node.Checked
-
                 For Each y In DirectCast(x, TreeNode).Nodes
                     y.checked = DirectCast(x, TreeNode).Checked
+
                 Next
 
             Next
@@ -129,7 +140,6 @@ Public Class Form1
         Try
 
 
-
             For Each x In TreeView1.Nodes 'div
                 For Each y In x.Nodes 'dept
 
@@ -146,5 +156,22 @@ Public Class Form1
         End Try
     End Sub
 
+    Private Sub ComboBoxProperties_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxProperties.SelectedIndexChanged
+        If ComboBoxProperties.SelectedIndex > -1 Then
+            TreeView1.Nodes.Clear
+            FillDivs()
+        End If
+    End Sub
 
+    Private Sub ButtonToggle_Click(sender As Object, e As EventArgs) Handles ButtonToggle.Click
+        For Each x In TreeView1.Nodes 'div
+            If DirectCast(x, TreeNode).IsExpanded Then
+                TreeView1.CollapseAll()
+                Exit Sub
+            Else
+                TreeView1.ExpandAll()
+                Exit Sub
+            End If
+        Next
+    End Sub
 End Class
