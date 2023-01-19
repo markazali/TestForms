@@ -83,6 +83,7 @@ Public Class TCP_ReaderForm
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Try
+            'start the reads when the button is pressed
             Dim ns As NetworkStream = tcpClient.GetStream
             ns.Write(Encoding.ASCII.GetBytes("s"), 0, Encoding.ASCII.GetBytes("s").Length)
 
