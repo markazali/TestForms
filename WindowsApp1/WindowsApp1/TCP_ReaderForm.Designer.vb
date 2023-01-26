@@ -29,6 +29,7 @@ Partial Class TCP_ReaderForm
         Me.TextBoxResponse = New System.Windows.Forms.TextBox()
         Me.ButtonConnect = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.SuspendLayout()
         '
         'TextBoxIP
@@ -93,11 +94,22 @@ Partial Class TCP_ReaderForm
         Me.Button1.Text = "Start Read"
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Location = New System.Drawing.Point(21, 126)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(96, 17)
+        Me.CheckBox1.TabIndex = 7
+        Me.CheckBox1.Text = "Save log to file"
+        Me.CheckBox1.UseVisualStyleBackColor = True
+        '
         'TCP_ReaderForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(786, 469)
+        Me.Controls.Add(Me.CheckBox1)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.ButtonConnect)
         Me.Controls.Add(Me.LabelPort)
@@ -119,4 +131,5 @@ Partial Class TCP_ReaderForm
     Friend WithEvents TextBoxResponse As TextBox
     Friend WithEvents ButtonConnect As Button
     Friend WithEvents Button1 As Button
+    Friend WithEvents CheckBox1 As CheckBox
 End Class

@@ -2,7 +2,7 @@
 Imports System.Text
 
 Public Class TCP_ReaderForm
-
+    Dim savelog As Boolean = False
     Dim networkStream As System.Net.Sockets.NetworkStream
     Dim tcpClient As System.Net.Sockets.TcpClient
     Private Sub ButtonConnect_Click(sender As Object, e As EventArgs) Handles ButtonConnect.Click
@@ -59,6 +59,9 @@ Public Class TCP_ReaderForm
                     Else
                         TextBoxResponse.AppendText(Now & " " & s & vbCrLf)
                     End If
+                    If savelog Then
+                        System.IO.File.AppendAllText(My.Application.Info.DirectoryPath & "\tcpreader.log", Now & " " & s & vbCrLf)
+                    End If
                 End If
 
             Next
@@ -92,5 +95,9 @@ Public Class TCP_ReaderForm
         End Try
 
 
+    End Sub
+
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
+        savelog = CheckBox1.Checked
     End Sub
 End Class
